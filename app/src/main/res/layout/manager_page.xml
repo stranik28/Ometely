@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/adapter_grey_dark">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:orientation="horizontal"
+        android:background="@drawable/red_top_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60sp"
+            android:layout_marginStart="83sp"
+            android:fontFamily="@font/main_name"
+            android:gravity="center"
+            android:paddingBottom="9sp"
+            android:text="@string/OMETELY"
+            android:textColor="@color/white"
+            android:textSize="38sp"/>
+
+        <ImageButton
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginTop="16sp"
+            android:layout_marginStart="25sp"
+            android:background="@drawable/refresh"
+            android:onClick="Update"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Готовящиеся заказы"
+        android:gravity="center"
+        android:layout_marginBottom="2sp"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/in_cooking"
+        android:layout_width="match_parent"
+        android:layout_height="210sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11sp"
+        android:layout_marginBottom="11sp"
+        android:text="Заказы в доставке"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/in_delivering"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

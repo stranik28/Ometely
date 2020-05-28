@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="@drawable/red_top_background"
+        android:fontFamily="@font/main_name"
+        android:gravity="center"
+        android:paddingBottom="9sp"
+        android:text="@string/OMETELY"
+        android:textColor="@color/white"
+        android:textSize="38sp" />
+
+
+    <ImageView
+        android:layout_width="250sp"
+        android:layout_height="250sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="35sp"
+        android:layout_marginEnd="10sp"
+        android:background="@drawable/logotype" />
+
+    <Button
+        android:layout_width="250sp"
+        android:layout_height="50sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70sp"
+        android:background="@drawable/button_login"
+        android:textSize="20sp"
+        android:hint="@string/loginAsAguest"
+        android:textColorHint="@color/white"
+        android:onClick="guestLog"/>
+
+    <Button
+        android:layout_width="250sp"
+        android:layout_height="50sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30sp"
+        android:textSize="20sp"
+        android:background="@drawable/button_login"
+        android:hint="@string/loginAsAWorker"
+        android:textColorHint="@color/white"
+        android:onClick="workerLog"/>
+
+
+
+
+</LinearLayout>
