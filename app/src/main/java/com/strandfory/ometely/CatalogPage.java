@@ -5,13 +5,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class CatalogPage extends Activity{
     
-    public static class pizza {
+    public static class pizza implements Serializable {
         
         int price;
         int count;
@@ -39,6 +49,7 @@ public class CatalogPage extends Activity{
         }
         
     }
+
 
 
     public static pizza pepperoni = new pizza();
@@ -69,7 +80,6 @@ public class CatalogPage extends Activity{
         mexican.setCount(0);
         CountPizzas();
         fillList();
-
     }
 
     private void fillList(){

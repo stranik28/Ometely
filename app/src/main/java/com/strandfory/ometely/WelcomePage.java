@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+
+
 public class WelcomePage extends Activity {
 
     @Override

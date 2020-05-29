@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "461293190779",
+    "firebase_url": "https://ometely.firebaseio.com",
+    "project_id": "ometely",
+    "storage_bucket": "ometely.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461293190779:android:3186e307c5015d3e33ecde",
+        "android_client_info": {
+          "package_name": "com.strandfory.ometely"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461293190779-18gg48sdf9dd2enc5lpl67ujm57kr0gb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.strandfory.ometely",
+            "certificate_hash": "ce15b4d5ec3311a8ad264b82eecc9b8a60ddb36c"
+          }
+        },
+        {
+          "client_id": "461293190779-g6stum9kl72r12vblsqflgsjql7cjkv2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAv1loNZrd1E5-96aOkGy8C32kHT5M69Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461293190779-g6stum9kl72r12vblsqflgsjql7cjkv2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

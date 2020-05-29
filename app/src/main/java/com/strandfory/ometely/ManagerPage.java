@@ -36,7 +36,6 @@ public class ManagerPage extends Activity {
         workBD = new WorkBD(this);
         getListForCook();
         getListDeliver();
-
     }
 
     private void getListForCook(){

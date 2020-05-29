@@ -14,7 +14,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 import static android.content.ContentValues.TAG;
 
@@ -27,7 +31,18 @@ public class BasketPage extends Activity {
     WorkBD workBD;
     CatalogPage mainActivity;
 
+    private DatabaseReference reference;
+    private FirebaseDatabase db;
+    private String KEY_ORDERS = "orders";
 
+
+    private void data(String name, String phone, String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican){
+        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS);
+        Date date = new Date();
+        culculateFprice();
+        Order neworder = new Order(date,name,phone,FinalPrice,address,countPepperonni,countCalzone,countCheese,countSeason,countMexican,null,null);
+        reference.push().setValue(neworder);
+    }
 
     private static ArrayList<String> listokadd(){
         ArrayList<String> listok = new ArrayList<>();
@@ -149,6 +164,7 @@ public class BasketPage extends Activity {
             contentValues.put(WorkBD.KEY_PIZZA4, CatalogPage.quattroformaggi.getCount());
             contentValues.put(WorkBD.KEY_PIZZA5, CatalogPage.mexican.getCount());
             contentValues.put(WorkBD.KEY_PRICE, FinalPrice);
+            data(name,phoneNumber,address,CatalogPage.pepperoni.getCount(), CatalogPage.calzone.getCount(), CatalogPage.quattrostagioni.getCount(),CatalogPage.quattroformaggi.getCount(), CatalogPage.mexican.getCount());
             database.insert(WorkBD.TABLE_CONTACTS, null, contentValues);
             Log.i(TAG, "Hey I`m put all data");
             Intent perehod = new Intent(BasketPage.this, WelcomePage.class);
