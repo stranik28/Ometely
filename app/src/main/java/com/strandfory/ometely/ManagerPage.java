@@ -1,17 +1,19 @@
 package com.strandfory.ometely;
 
 import android.app.Activity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import static android.content.ContentValues.TAG;
+import java.util.ArrayList;
 
 public class ManagerPage extends Activity {
 
@@ -23,53 +25,74 @@ public class ManagerPage extends Activity {
     private static ArrayList<String> Cname;
     private static ArrayList<String> Cphone;
     private static ArrayList<String> Cpizzas;
-    private static ArrayList<Integer> Price;
+    private static ArrayList<Integer> price;
     private static boolean c;
     private static boolean d;
-    WorkBD workBD;
+    private DatabaseReference reference;
+    private String KEY_ORDERS = "orders";
 
     @Override
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manager_page);
-        workBD = new WorkBD(this);
-        getListForCook();
-        getListDeliver();
+        c = true;
+        getList();
     }
 
-    private void getListForCook(){
-        Cname = new ArrayList<>();
-        Cphone = new ArrayList<>();
-        Cpizzas = new ArrayList<>();
-        SQLiteDatabase db = workBD.getReadableDatabase();
-        Cursor cursor = db.query(WorkBD.TABLE_CONTACTS, null, null, null, null, null, null);
-        cursor.moveToFirst();
-        do{
-            try {
-                String pizza1 = "Пепперони: " + cursor.getInt(cursor.getColumnIndex("pizza1")) + "\n";
-                String pizza2 = "Кальцоне: " + cursor.getInt(cursor.getColumnIndex("pizza2")) + "\n";
-                String pizza3 = "Четыре сезона: " + cursor.getInt(cursor.getColumnIndex("pizza3")) + "\n";
-                String pizza4 = "Четыре сыра: " + cursor.getInt(cursor.getColumnIndex("pizza4")) + "\n";
-                String pizza5 = "Мексиканская: " + cursor.getInt(cursor.getColumnIndex("pizza5")) + "\n";
-                int deliv = cursor.getInt(cursor.getColumnIndex("iscook"));
-                if( deliv == 0) {
-                    Cname.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_NAME)));
-                    Cphone.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_NUMBER)));
-                    Cpizzas.add(pizza1 + pizza2 + pizza3 + pizza4 + pizza5);
+    private void getList(){
+        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS);
+        ValueEventListener valueEventListener = new ValueEventListener(){
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Dname = new ArrayList<>();
+                Dphone = new ArrayList<>();
+                Daddress = new ArrayList<>();
+                price = new ArrayList<>();
+                Cname = new ArrayList<>();
+                Cphone = new ArrayList<>();
+                Cpizzas = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    Order order = ds.getValue(Order.class);
+                    System.out.println("hey");
+                    if((order.dateC != null) && (order.dateD == null)) {
+                        Dname.add(order.name);
+                        Dphone.add(order.phone);
+                        Daddress.add(order.address);
+                        price.add(order.price);
+                    }
+                    else if(order.dateC == null) {
+                        Cname.add(order.name);
+                        Cphone.add(order.phone);
+                        String pizza1 = "Пепперони: " + order.countPepperonni + "\n";
+                        String pizza2 = "Кальцоне: " + order.countCalzone + "\n";
+                        String pizza3 = "Четыре сезона: " + order.countSeason + "\n";
+                        String pizza4 = "Четыре сыра: " + order.countCheese + "\n";
+                        String pizza5 = "Мексиканская: " + order.countMexican + "\n";
+                        String pizaaas = pizza1 + pizza2 + pizza3 + pizza4 + pizza5;
+                        Cpizzas.add(pizaaas);
+                    }
                 }
                 if(c){
-                    adapterCookPage.refreshData(Cname,Cphone,Cpizzas);
                     c = false;
-                }
-                else
+                    setAdapterDMangaerPage();
                     setAdapterCManagerPage();
+                }
+                else{
+                    adapterDeliverPage.refreshData(Dname,Dphone,Daddress,price);
+                    adapterCookPage.refreshData(Cname,Cphone,Cpizzas);
+                }
             }
 
-            catch (Exception e){}
-        }
-        while (cursor.moveToNext());
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        reference.addValueEventListener(valueEventListener);
     }
+
 
     private void setAdapterCManagerPage(){
         RecyclerView recyclerView = findViewById(R.id.in_cooking);
@@ -79,52 +102,12 @@ public class ManagerPage extends Activity {
         recyclerView.setAdapter(adapterCookPage);
     }
 
-    private void getListDeliver(){
-        Dname = new ArrayList<>();
-        Dphone = new ArrayList<>();
-        Daddress = new ArrayList<>();
-        Price = new ArrayList<>();
-        Log.i(TAG, "IT`s Deliver Adapter");
-        SQLiteDatabase db = workBD.getReadableDatabase();
-        Cursor cursor = db.query(WorkBD.TABLE_CONTACTS, null, null, null, null, null, null);
-        cursor.moveToFirst();
-        do{
-            try {
-                int deliv = cursor.getInt(cursor.getColumnIndex("iscook"));
-                if (deliv == 1) {
-                    Dname.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_NAME)));
-                    Dphone.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_NUMBER)));
-                    Daddress.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_ADDRESS)));
-                    Price.add(cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_PRICE)));
-                }
-            }
-            catch (Exception e){
-            }
-
-            if(d){
-                adapterDeliverPage.refreshData(Dname,Dphone,Daddress,Price);
-                d = false;
-            }
-            else
-                setAdapterDMangaerPage();
-        }
-        while (cursor.moveToNext());
-        db.close();
-    }
-
     private void setAdapterDMangaerPage(){
         RecyclerView recyclerView2 = findViewById(R.id.in_delivering);
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(this);
         recyclerView2.setLayoutManager(layoutManager1);
-        adapterDeliverPage = new AdapterDeliverPage(Dname,Dphone,Daddress,Price);
+        adapterDeliverPage = new AdapterDeliverPage(Dname,Dphone,Daddress,price);
         recyclerView2.setAdapter(adapterDeliverPage);
-    }
-
-    public void Update(View v){
-        c = true;
-        d = true;
-        getListForCook();
-        getListDeliver();
     }
 
 }

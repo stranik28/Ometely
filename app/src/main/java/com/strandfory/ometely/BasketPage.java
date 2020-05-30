@@ -149,7 +149,7 @@ public class BasketPage extends Activity {
             b = false;
         }
 
-        String address = " Улица: " + street + " \n " + "Дом:  " + home + " \n " + "Подъезд: " + porch + " \n " + "Этаж: " + level + " \n " + "Квартира: " + apprt;
+        String address = " Ул: " + street + " \n " + "Дом:  " + home + " \n " + "Подъезд: " + porch + " \n " + "Этаж: " + level + " \n " + "Кв: " + apprt;
 
 
         if(b){

@@ -32,7 +32,6 @@ public class CookPage extends Activity {
     private static ArrayList<String> name;
     private static ArrayList<String> phone;
     private static ArrayList<String> pizzas;
-    WorkBD workBD;
     private static boolean p;
     private DatabaseReference reference;
     private String KEY_ORDERS = "orders";
@@ -48,11 +47,9 @@ public class CookPage extends Activity {
                 phone = new ArrayList<>();
                 pizzas = new ArrayList<>();
                 key = new ArrayList<>();
-                int i = 1;
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Order order = ds.getValue(Order.class);
                     if(order.dateC == null) {
-                        i++;
                         key.add(ds.getKey());
                         name.add(order.name);
                         phone.add(order.phone);
@@ -74,7 +71,7 @@ public class CookPage extends Activity {
 
                 if(name.size() == 0){
                     TextView t;
-                    t = findViewById(R.id.NoOrdersD);
+                    t = findViewById(R.id.NoOrders);
                     t.setText("ПОКА \n НЕТ \n ЗАКАЗОВ \n :/ \n \n \n");
                 }
             }
@@ -91,7 +88,6 @@ public class CookPage extends Activity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cook_page);
-        workBD = new WorkBD(this);
         name = new ArrayList<>();
         phone = new ArrayList<>();
         pizzas = new ArrayList<>();

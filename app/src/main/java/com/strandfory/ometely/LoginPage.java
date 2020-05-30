@@ -2,8 +2,6 @@ package com.strandfory.ometely;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,13 +10,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
 
 public class LoginPage extends Activity {
 
-    WorkBD workBD;
     private int i;
     private boolean admin;
     private ArrayList<String> log;
@@ -28,6 +33,7 @@ public class LoginPage extends Activity {
     private ArrayList<Integer> manager;
     public String adminLogin;
     public String adminPassword;
+    private DatabaseReference reference;
 
 
     @Override
@@ -39,13 +45,13 @@ public class LoginPage extends Activity {
             adminPassword = "admin";
             adminLogin = "admin";
         }
-        workBD = new WorkBD(this);
         fillList();
     }
 
     @Override
     public void onResume(){
         super.onResume();
+        i = 0;
         fillList();
     }
 
@@ -127,29 +133,46 @@ public class LoginPage extends Activity {
     }
 
     private void fillList(){
-        log = new ArrayList<>();
-        pass = new ArrayList<>();
-        cook = new ArrayList<>();
-        deliver = new ArrayList<>();
-        manager = new ArrayList<>();
-        SQLiteDatabase db = workBD.getReadableDatabase();
-        Cursor cursor = db.query(WorkBD.TABLE_WORKERS, null,null,null,null,null,null);
-        cursor.moveToFirst();
-        try{
-            do {
-                log.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_USERNAME)));
-                pass.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_USERPASS)));
-                cook.add(cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_COOK)));
-                deliver.add(cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_DELIVER)));
-                manager.add(cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_MANAGER)));
+        reference = FirebaseDatabase.getInstance().getReference("workers");
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                log = new ArrayList<>();
+                pass = new ArrayList<>();
+                cook = new ArrayList<>();
+                deliver = new ArrayList<>();
+                manager = new ArrayList<>();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Worker worker = ds.getValue(Worker.class);
+                    log.add(worker.login);
+                    pass.add(worker.pass);
+                    char ch = worker.login.charAt(0);
+                    String S = String.valueOf(ch);
+                    if("C".equals(S)){
+                        cook.add(1);
+                        deliver.add(0);
+                        manager.add(0);
+                    }
+                    else if("D".equals(S)){
+                        cook.add(0);
+                        deliver.add(1);
+                        manager.add(0);
+                    }
+                    else{
+                        cook.add(0);
+                        deliver.add(0);
+                        manager.add(1);
+                    }
+                    System.out.println(log + " " + pass);
+                }
             }
-            while (cursor.moveToNext());
-        }
-        catch (Exception e){
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Не найдено аккаунтов для работников обратитесь к администратору.", Toast.LENGTH_SHORT);
-            toast.show();
-        }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        reference.addValueEventListener(valueEventListener);
     }
 
     private boolean checkLogPass(int l, String lo, String pa){

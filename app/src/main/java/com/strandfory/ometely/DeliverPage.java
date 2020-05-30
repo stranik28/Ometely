@@ -1,11 +1,8 @@
 package com.strandfory.ometely;
 
 import android.app.Activity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +27,6 @@ import static android.content.ContentValues.TAG;
 public class DeliverPage extends Activity{
 
     private static AdapterDeliverPage adapterDeliverPage;
-    private static ArrayList<Integer> id;
     private static ArrayList<String> name;
     private static ArrayList<String> phone;
     private static ArrayList<String> address;
@@ -61,22 +57,18 @@ public class DeliverPage extends Activity{
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                id = new ArrayList<>();
                 name = new ArrayList<>();
                 phone = new ArrayList<>();
                 address = new ArrayList<>();
                 price = new ArrayList<>();
                 key = new ArrayList<>();
-                int i = 1;
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Order order = ds.getValue(Order.class);
                     System.out.println("hey");
                     if((order.dateC != null) && (order.dateD == null)) {
-                        i++;
                         System.out.println("heya");
                         key.add(ds.getKey());
                         System.out.println(key);
-                        id.add(i);
                         name.add(order.name);
                         phone.add(order.phone);
                         address.add(order.address);
@@ -106,51 +98,6 @@ public class DeliverPage extends Activity{
         };
         reference.addValueEventListener(valueEventListener);
     }
-
-    /*private void getItemForAdapter(){
-        id = new ArrayList<>();
-        name = new ArrayList<>();
-        phone = new ArrayList<>();
-        address = new ArrayList<>();
-        price = new ArrayList<>();
-        Log.i(TAG, "IT`s Deliver Adapter");
-        SQLiteDatabase db = workBD.getReadableDatabase();
-        Cursor cursor = db.query(WorkBD.TABLE_CONTACTS, null, null, null, null, null, null);
-        cursor.moveToFirst();
-        TextView t;
-        do{
-            try {
-                int deliv = cursor.getInt(cursor.getColumnIndex("iscook"));
-                if (deliv == 1) {
-                    id.add(cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_ID)));
-                    name.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_NAME)));
-                    phone.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_NUMBER)));
-                    address.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_ADDRESS)));
-                    price.add(cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_PRICE)));
-                    t = findViewById(R.id.NoOrdersD);
-                    t.setText("");
-                    System.out.println("Hey i`s do, while " + cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_ID)));
-                    }
-            }
-            catch (Exception e){
-                t = findViewById(R.id.NoOrdersD);
-                t.setText("ПОКА \n НЕТ \n ЗАКАЗОВ \n :/ \n \n \n");
-            }
-
-            if(b){
-                adapterDeliverPage.refreshData(name,phone,address,price);
-                b = false;
-            }
-            else
-                setAdapterDeliverPage();
-        }
-        while (cursor.moveToNext());
-        db.close();
-        if(id.size() == 0){
-            t = findViewById(R.id.NoOrdersD);
-            t.setText("ПОКА \n НЕТ \n ЗАКАЗОВ \n :/ \n \n \n");
-        }
-    }*/
 
     private void setAdapterDeliverPage(){
         RecyclerView recyclerView = findViewById(R.id.DeliverRecyclerView);

@@ -1,9 +1,6 @@
 package com.strandfory.ometely;
 
 import android.app.Activity;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +11,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -30,9 +33,11 @@ public class AdminPage extends Activity {
     private ArrayList<String> logins;
     private ArrayList<String> passwords;
     private ArrayList<Integer> id;
+    private ArrayList<String> key;
     private static AdapterAdminPage adapterAdminPage;
     private boolean b;
-    SQLiteDatabase db;
+    private String KEY_WOERKERS = "workers";
+    private DatabaseReference reference;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -45,80 +50,78 @@ public class AdminPage extends Activity {
         passC = findViewById(R.id.PasswordTextC);
         logM = findViewById(R.id.LoginTextM);
         passM = findViewById(R.id.PasswordTextM);
-        db = workBD.getReadableDatabase();
-        getList();
-        counter = 0;
-    }
-
-    public void AdminClickD(View v){
-        ContentValues contentValues = new ContentValues();
-        String Nlog = "Deliver_" + logD.getText().toString();
-        String Npass = passD.getText().toString();
-        contentValues.put(WorkBD.KEY_USERNAME, Nlog);
-        contentValues.put(WorkBD.KEY_USERPASS, Npass);
-        contentValues.put(WorkBD.KEY_DELIVER, 1);
-        db.insert(WorkBD.TABLE_WORKERS, null, contentValues);
-        logD.setText("");
-        passD.setText("");
-        b = true;
-        getList();
-    }
-
-    public void AdminClickC(View v){
-        ContentValues contentValues = new ContentValues();
-        String Nlog = "Cook_" + logC.getText().toString();
-        String Npass = passC.getText().toString();
-        contentValues.put(WorkBD.KEY_USERNAME, Nlog);
-        contentValues.put(WorkBD.KEY_USERPASS, Npass);
-        contentValues.put(WorkBD.KEY_COOK, 1);
-        db.insert(WorkBD.TABLE_WORKERS, null, contentValues);
-        logC.setText("");
-        passC.setText("");
-        b = true;
-        getList();
-    }
-
-    public void AdminClickM(View v){
-        ContentValues contentValues = new ContentValues();
-        String Nlog = "Manager_" + logM.getText().toString();
-        String Npass = passM.getText().toString();
-        contentValues.put(WorkBD.KEY_USERNAME, Nlog);
-        contentValues.put(WorkBD.KEY_USERPASS, Npass);
-        contentValues.put(WorkBD.KEY_MANAGER, 1);
-        db.insert(WorkBD.TABLE_WORKERS, null, contentValues);
-        logM.setText("");
-        passM.setText("");
-        b = true;
-        getList();
-    }
-
-    private void getList(){
         id = new ArrayList<>();
         logins = new ArrayList<>();
         passwords = new ArrayList<>();
-        Cursor cursor = db.query(WorkBD.TABLE_WORKERS, null, null, null, null, null, null);
-        cursor.moveToFirst();
-        try {
-            do {
-                id.add(cursor.getInt(cursor.getColumnIndex(WorkBD.KEY_ID)));
-                logins.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_USERNAME)));
-                passwords.add(cursor.getString(cursor.getColumnIndex(WorkBD.KEY_USERPASS)));
-            }
-            while (cursor.moveToNext());
-            cursor.close();
-        }
-        catch (Exception e){
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Кажется у вас ещё нет зарегистрированных работников.", Toast.LENGTH_SHORT);
-            toast.show();
-        }
+        adapterAdminPage = new AdapterAdminPage(id,logins,passwords);
+        b = true;
+        getList();
+    }
 
-        if(b) {
-            adapterAdminPage.refreshData(id, logins, passwords);
-            b = false;
-        }
-        else
-            setAdapter();
+    public void AdminClickD(View v){
+        reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
+        String Nlog = "Deliver_" + logD.getText().toString();
+        String Npass = passD.getText().toString();
+        Worker worker = new Worker(Nlog, Npass);
+        reference.push().setValue(worker);
+        logD.setText("");
+        passD.setText("");
+    }
+
+    public void AdminClickC(View v){
+        reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
+        String Nlog = "Cook_" + logC.getText().toString();
+        String Npass = passC.getText().toString();
+        Worker worker = new Worker(Nlog,Npass);
+        reference.push().setValue(worker);
+        logC.setText("");
+        passC.setText("");
+    }
+
+    public void AdminClickM(View v){
+        reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
+        String Nlog = "Manager_" + logM.getText().toString();
+        String Npass = passM.getText().toString();
+        Worker worker = new Worker(Nlog,Npass);
+        reference.push().setValue(worker);
+        logM.setText("");
+        passM.setText("");
+    }
+
+    private void getList(){
+        reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                id = new ArrayList<>();
+                logins = new ArrayList<>();
+                passwords = new ArrayList<>();
+                key =  new ArrayList<>();
+                int i = 1;
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    Worker worker = ds.getValue(Worker.class);
+                    key.add(ds.getKey());
+                    id.add(i);
+                    i++;
+                    logins.add(worker.login);
+                    passwords.add(worker.pass);
+                }
+
+                if(b){
+                    setAdapter();
+                    b = false;
+                }
+                else{
+                    adapterAdminPage.refreshData(id,logins,passwords);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        reference.addValueEventListener(valueEventListener);
     }
 
     private void setAdapter(){
@@ -156,27 +159,8 @@ public class AdminPage extends Activity {
             }
             if(counter == 2){
                 counter = 0;
-                logins.remove(idS);
-                passwords.remove(idS);
-                db.execSQL("DROP TABLE IF EXISTS " + WorkBD.TABLE_WORKERS);
-                db.execSQL("CREATE TABLE " + WorkBD.TABLE_WORKERS + " (" + WorkBD.KEY_ID + " INTEGER PRIMARY KEY, " + WorkBD.KEY_USERNAME + " TEXT, " + WorkBD.KEY_USERPASS + " TEXT, " + WorkBD.KEY_COOK + " BLOB DEFAULT 0, " + WorkBD.KEY_DELIVER + " BLOB DEFAULT 0, " + WorkBD.KEY_MANAGER + " BLOB DEFAULT 0 )");
-                for(int i = 0; i < logins.size(); i++){
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put(WorkBD.KEY_USERNAME, logins.get(i));
-                    contentValues.put(WorkBD.KEY_USERPASS, passwords.get(i));
-                    int cook = logins.get(i).indexOf("Ca");
-                    int deliver = logins.get(i).indexOf("D");
-                    if(cook == 0) {
-                        contentValues.put(WorkBD.KEY_COOK, 1);
-                        System.out.println("Hey");
-                    }
-                    else if(deliver == 0)
-                        contentValues.put(WorkBD.KEY_DELIVER, 1);
-                    else
-                        contentValues.put(WorkBD.KEY_MANAGER, 1);
-                    db.insert(WorkBD.TABLE_WORKERS, null, contentValues);
-                }
-                b = true;
+                reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
+                reference.child(key.get(idS)).removeValue();
                 getList();
             }
         }
