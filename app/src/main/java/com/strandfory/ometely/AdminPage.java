@@ -178,7 +178,7 @@ public class AdminPage extends Activity {
     private class timer extends Thread {
         public void run() {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1500);
                 counter = 0;
             } catch (InterruptedException e) {
             }

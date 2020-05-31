@@ -6,10 +6,8 @@
 
     <activity android:name=".CatalogPage" android:screenOrientation="portrait"/>
 
-    <activity android:name=".LoginPage" android:screenOrientation="portrait"/>
 
-
-    <activity android:name=".WelcomePage"
+        <activity android:name=".WelcomePage"
         android:screenOrientation="portrait">
 
 
