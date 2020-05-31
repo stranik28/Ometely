@@ -1,6 +1,8 @@
 package com.strandfory.ometely;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -19,16 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 public class AdminPage extends Activity {
 
-    WorkBD workBD;
     private int counter;
-    private EditText logD;
     private EditText passD;
-    private EditText logC;
     private EditText passC;
-    private EditText logM;
     private EditText passM;
     private ArrayList<String> logins;
     private ArrayList<String> passwords;
@@ -40,55 +40,54 @@ public class AdminPage extends Activity {
     private DatabaseReference reference;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_page);
-        workBD = new WorkBD(this);
-        logD = findViewById(R.id.LoginTextD);
         passD = findViewById(R.id.PasswordTextD);
-        logC = findViewById(R.id.LoginTextC);
         passC = findViewById(R.id.PasswordTextC);
-        logM = findViewById(R.id.LoginTextM);
         passM = findViewById(R.id.PasswordTextM);
         id = new ArrayList<>();
         logins = new ArrayList<>();
         passwords = new ArrayList<>();
-        adapterAdminPage = new AdapterAdminPage(id,logins,passwords);
+        adapterAdminPage = new AdapterAdminPage(id, logins, passwords);
         b = true;
         getList();
     }
 
-    public void AdminClickD(View v){
+    public void AdminClickD(View v) {
         reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
-        String Nlog = "Deliver_" + logD.getText().toString();
+        String Nlog = "Deliver";
         String Npass = passD.getText().toString();
-        Worker worker = new Worker(Nlog, Npass);
-        reference.push().setValue(worker);
-        logD.setText("");
-        passD.setText("");
+        if (!Nlog.equals("") && !Npass.equals("")) {
+            Worker worker = new Worker(Nlog, Npass);
+            reference.push().setValue(worker);
+            passD.setText("");
+        }
     }
 
-    public void AdminClickC(View v){
+    public void AdminClickC(View v) {
         reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
-        String Nlog = "Cook_" + logC.getText().toString();
+        String Nlog = "Cook";
         String Npass = passC.getText().toString();
-        Worker worker = new Worker(Nlog,Npass);
-        reference.push().setValue(worker);
-        logC.setText("");
-        passC.setText("");
+        if (!Nlog.equals("") && !Npass.equals("")) {
+            Worker worker = new Worker(Nlog, Npass);
+            reference.push().setValue(worker);
+            passC.setText("");
+        }
     }
 
-    public void AdminClickM(View v){
+    public void AdminClickM(View v) {
         reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
-        String Nlog = "Manager_" + logM.getText().toString();
+        String Nlog = "Manager";
         String Npass = passM.getText().toString();
-        Worker worker = new Worker(Nlog,Npass);
-        reference.push().setValue(worker);
-        logM.setText("");
-        passM.setText("");
+        if (!Nlog.equals("") && !Npass.equals("")) {
+            Worker worker = new Worker(Nlog, Npass);
+            reference.push().setValue(worker);
+            passM.setText("");
+        }
     }
 
-    private void getList(){
+    private void getList() {
         reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -96,9 +95,9 @@ public class AdminPage extends Activity {
                 id = new ArrayList<>();
                 logins = new ArrayList<>();
                 passwords = new ArrayList<>();
-                key =  new ArrayList<>();
+                key = new ArrayList<>();
                 int i = 1;
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Worker worker = ds.getValue(Worker.class);
                     key.add(ds.getKey());
                     id.add(i);
@@ -107,12 +106,11 @@ public class AdminPage extends Activity {
                     passwords.add(worker.pass);
                 }
 
-                if(b){
+                if (b) {
                     setAdapter();
                     b = false;
-                }
-                else{
-                    adapterAdminPage.refreshData(id,logins,passwords);
+                } else {
+                    adapterAdminPage.refreshData(id, logins, passwords);
                 }
             }
 
@@ -124,14 +122,14 @@ public class AdminPage extends Activity {
         reference.addValueEventListener(valueEventListener);
     }
 
-    private void setAdapter(){
+    private void setAdapter() {
         RecyclerView recyclerView = findViewById(R.id.AdminRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(itemTouchHelperCallback);
         recyclerView.addItemDecoration(itemTouchHelper);
         itemTouchHelper.attachToRecyclerView(recyclerView);
-        adapterAdminPage = new AdapterAdminPage(id,logins,passwords);
+        adapterAdminPage = new AdapterAdminPage(id, logins, passwords);
         recyclerView.setAdapter(adapterAdminPage);
     }
 
@@ -143,7 +141,7 @@ public class AdminPage extends Activity {
         }
 
         @Override
-        public boolean onMove(@NonNull  RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
         }
 
@@ -151,18 +149,39 @@ public class AdminPage extends Activity {
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
             int idS = viewHolder.getAdapterPosition();
             counter++;
-            if(counter == 1){
+            if (counter == 1) {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Сделайте свай еще раз, для подтверждения удаления.", Toast.LENGTH_SHORT);
                 toast.show();
                 setAdapter();
+                reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
+                timer timer = new timer();
+                timer.start();
+                System.out.println(logins.get(idS));
             }
-            if(counter == 2){
+            if (counter == 2) {
                 counter = 0;
                 reference = FirebaseDatabase.getInstance().getReference(KEY_WOERKERS);
-                reference.child(key.get(idS)).removeValue();
+                if (!(String.valueOf(logins.get(idS)).equals("Admin")))
+                    reference.child(key.get(idS)).removeValue();
                 getList();
             }
         }
     };
+
+    public void logout(View v) {
+        WelcomePage.k = true;
+        Intent intent = new Intent(AdminPage.this, WelcomePage.class);
+        startActivity(intent);
+    }
+
+    private class timer extends Thread {
+        public void run() {
+            try {
+                Thread.sleep(1000);
+                counter = 0;
+            } catch (InterruptedException e) {
+            }
+        }
+    }
 }

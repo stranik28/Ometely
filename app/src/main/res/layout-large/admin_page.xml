@@ -34,28 +34,15 @@
             android:layout_height="100sp">
 
             <EditText
-                android:id="@+id/LoginTextD"
-                android:layout_width="220sp"
-                android:layout_height="60sp"
-                android:layout_marginStart="20sp"
-                android:background="@drawable/add_log_and_pass_button"
-                android:gravity="center"
-                android:textSize="25sp"
-                android:layout_gravity="center"
-                android:hint="@string/LogintHint"
-                android:inputType="textPersonName" />
-
-            <EditText
                 android:id="@+id/PasswordTextD"
-                android:layout_width="220sp"
+                android:layout_width="400sp"
                 android:layout_height="60sp"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="60sp"
                 android:layout_gravity="center"
                 android:background="@drawable/add_log_and_pass_button"
                 android:gravity="center"
-                android:textSize="25sp"
-                android:hint="@string/PasswordHint"
-                android:inputType="textPassword" />
+                android:textSize="35sp"
+                android:hint="Введите email" />
 
             <ImageButton
                 android:id="@+id/admin_plusD"
@@ -86,28 +73,15 @@
             android:layout_height="100sp">
 
             <EditText
-                android:id="@+id/LoginTextC"
-                android:layout_width="220sp"
-                android:layout_height="60sp"
-                android:layout_gravity="center"
-                android:layout_marginStart="20sp"
-                android:background="@drawable/add_log_and_pass_button"
-                android:gravity="center"
-                android:textSize="25sp"
-                android:hint="@string/LogintHint"
-                android:inputType="textPersonName" />
-
-            <EditText
                 android:id="@+id/PasswordTextC"
-                android:layout_width="220sp"
+                android:layout_width="400sp"
                 android:layout_height="60sp"
+                android:layout_marginStart="60sp"
                 android:layout_gravity="center"
-                android:layout_marginStart="20sp"
                 android:background="@drawable/add_log_and_pass_button"
                 android:gravity="center"
-                android:textSize="25sp"
-                android:hint="@string/PasswordHint"
-                android:inputType="textPassword" />
+                android:textSize="35sp"
+                android:hint="Введите email" />
 
             <ImageButton
                 android:id="@+id/admin_plusC"
@@ -139,28 +113,15 @@
             android:layout_height="100sp">
 
             <EditText
-                android:id="@+id/LoginTextM"
-                android:layout_width="220sp"
-                android:layout_height="60sp"
-                android:layout_gravity="center"
-                android:layout_marginStart="20sp"
-                android:background="@drawable/add_log_and_pass_button"
-                android:gravity="center"
-                android:textSize="25sp"
-                android:hint="@string/LogintHint"
-                android:inputType="textPersonName"  />
-
-            <EditText
                 android:id="@+id/PasswordTextM"
-                android:layout_width="220sp"
+                android:layout_width="400sp"
                 android:layout_height="60sp"
+                android:layout_marginStart="60sp"
                 android:layout_gravity="center"
-                android:layout_marginStart="20sp"
                 android:background="@drawable/add_log_and_pass_button"
                 android:gravity="center"
-                android:textSize="25sp"
-                android:hint="@string/PasswordHint"
-                android:inputType="textPassword" />
+                android:textSize="35sp"
+                android:hint="Введите email" />
 
             <ImageButton
                 android:id="@+id/admin_plusM"

@@ -18,10 +18,10 @@
 
         <TextView
             android:id="@+id/Aid"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="37sp"
+            android:layout_height="65sp"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:gravity="center"
             android:background="#2B2A2A"/>
 
@@ -34,10 +34,10 @@
 
         <TextView
             android:id="@+id/Alog"
-            android:layout_width="180sp"
+            android:layout_width="100sp"
             android:layout_height="match_parent"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:gravity="center"
             android:background="#2B2A2A"/>
 
@@ -52,10 +52,10 @@
         <TextView
             android:id="@+id/Apass"
             android:layout_width="match_parent"
-            android:layout_height="40sp"
+            android:layout_height="match_parent"
             android:textColor="@color/white"
             android:gravity="center"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:background="#2B2A2A"/>
     </LinearLayout>
 

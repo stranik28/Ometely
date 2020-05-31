@@ -9,15 +9,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60sp"
-        android:orientation="horizontal"
         android:background="@drawable/red_top_background">
 
+        <ImageButton
+            android:layout_gravity="center"
+            android:layout_marginStart="18sp"
+            android:layout_width="55sp"
+            android:layout_height="50sp"
+            android:background="@drawable/exit"
+            android:onClick="logout"/>
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="60sp"
-            android:background="@drawable/red_top_background"
             android:fontFamily="@font/main_name"
             android:gravity="center"
+            android:layout_marginStart="30sp"
             android:paddingBottom="9sp"
             android:text="@string/OMETELY"
             android:textColor="@color/white"

@@ -1,8 +1,10 @@
 package com.strandfory.ometely;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -137,4 +139,10 @@ public class DeliverPage extends Activity{
             getList();
         }
     };
+
+    public void logout(View v){
+        WelcomePage.k = true;
+        Intent intent = new Intent(DeliverPage.this, WelcomePage.class);
+        startActivity(intent);
+    }
 }

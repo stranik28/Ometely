@@ -138,4 +138,10 @@ public class CatalogPage extends Activity{
         Intent perehod = new Intent(CatalogPage.this , BasketPage.class);
         startActivity(perehod);
     }
+
+    public void logout(View v){
+        WelcomePage.k = true;
+        Intent intent = new Intent(CatalogPage.this, WelcomePage.class);
+        startActivity(intent);
+    }
 }

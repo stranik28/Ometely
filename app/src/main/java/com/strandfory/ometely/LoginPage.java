@@ -26,11 +26,7 @@ public class LoginPage extends Activity {
 
     private int i;
     private boolean admin;
-    private ArrayList<String> log;
     private ArrayList<String> pass;
-    private ArrayList<Integer> cook;
-    private ArrayList<Integer> deliver;
-    private ArrayList<Integer> manager;
     public String adminLogin;
     public String adminPassword;
     private DatabaseReference reference;
@@ -45,17 +41,17 @@ public class LoginPage extends Activity {
             adminPassword = "admin";
             adminLogin = "admin";
         }
-        fillList();
+        //fillList();
     }
 
     @Override
     public void onResume(){
         super.onResume();
         i = 0;
-        fillList();
+        //fillList();
     }
 
-    public void Login (View v){
+   /* public void Login (View v){
 
         EditText Login = findViewById(R.id.LoginText);
         EditText Password = findViewById(R.id.PasswordText);
@@ -193,5 +189,5 @@ public class LoginPage extends Activity {
         }
 
         return b;
-    }
+    }*/
 }

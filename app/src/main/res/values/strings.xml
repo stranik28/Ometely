@@ -21,7 +21,7 @@
     <string name="OrderText2Null"> пицц</string>
     <string name="OrderText2One"> пицца</string>
     <string name="OrderText2Two"> пицы</string>
-    <string name="LogintHint">Введите логин</string>
+    <string name="LogintHint">Введите email</string>
     <string name="PasswordHint">Введите пароль</string>
     <string name="LoginB">Войти</string>
     <string name="error">ERROR</string>

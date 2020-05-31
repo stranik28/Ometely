@@ -28,8 +28,6 @@ public class BasketPage extends Activity {
     private static TextView FinalBuy;
     private static AdapterBasketPage adapteR;
     private static int FinalPrice;
-    WorkBD workBD;
-    CatalogPage mainActivity;
 
     private DatabaseReference reference;
     private FirebaseDatabase db;
@@ -80,9 +78,7 @@ public class BasketPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bascket_page);
         FinalBuy = findViewById(R.id.buyText);
-        mainActivity= new CatalogPage();
         culculateFprice();
-        workBD = new WorkBD(this);
         Recycler();
     }
 
@@ -153,19 +149,7 @@ public class BasketPage extends Activity {
 
 
         if(b){
-            SQLiteDatabase database = workBD.getReadableDatabase();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(WorkBD.KEY_NAME , name);
-            contentValues.put(WorkBD.KEY_NUMBER, phoneNumber);
-            contentValues.put(WorkBD.KEY_ADDRESS, address);
-            contentValues.put(WorkBD.KEY_PIZZA1, CatalogPage.pepperoni.getCount());
-            contentValues.put(WorkBD.KEY_PIZZA2, CatalogPage.calzone.getCount());
-            contentValues.put(WorkBD.KEY_PIZZA3, CatalogPage.quattrostagioni.getCount());
-            contentValues.put(WorkBD.KEY_PIZZA4, CatalogPage.quattroformaggi.getCount());
-            contentValues.put(WorkBD.KEY_PIZZA5, CatalogPage.mexican.getCount());
-            contentValues.put(WorkBD.KEY_PRICE, FinalPrice);
             data(name,phoneNumber,address,CatalogPage.pepperoni.getCount(), CatalogPage.calzone.getCount(), CatalogPage.quattrostagioni.getCount(),CatalogPage.quattroformaggi.getCount(), CatalogPage.mexican.getCount());
-            database.insert(WorkBD.TABLE_CONTACTS, null, contentValues);
             Log.i(TAG, "Hey I`m put all data");
             Intent perehod = new Intent(BasketPage.this, WelcomePage.class);
             startActivity(perehod);
@@ -237,6 +221,12 @@ public class BasketPage extends Activity {
         }
         adapteR.refreshData(listokadd());
         culculateFprice();
+    }
+
+    public void logout(View v){
+        WelcomePage.k = true;
+        Intent intent = new Intent(BasketPage.this, WelcomePage.class);
+        startActivity(intent);
     }
 
 }

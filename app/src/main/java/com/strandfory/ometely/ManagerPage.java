@@ -1,12 +1,17 @@
 package com.strandfory.ometely;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +45,12 @@ public class ManagerPage extends Activity {
         getList();
     }
 
+    public void logout(View v){
+        WelcomePage.k = true;
+        Intent intent = new Intent(ManagerPage.this, WelcomePage.class);
+        startActivity(intent);
+    }
+
     private void getList(){
         reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS);
         ValueEventListener valueEventListener = new ValueEventListener(){
@@ -55,7 +66,6 @@ public class ManagerPage extends Activity {
                 Cpizzas = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Order order = ds.getValue(Order.class);
-                    System.out.println("hey");
                     if((order.dateC != null) && (order.dateD == null)) {
                         Dname.add(order.name);
                         Dphone.add(order.phone);

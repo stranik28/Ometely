@@ -2,8 +2,10 @@ package com.strandfory.ometely;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -109,6 +111,11 @@ public class CookPage extends Activity {
         recyclerView.setAdapter(adapterCookPage);
     }
 
+    public void logout(View v){
+        WelcomePage.k = true;
+        Intent intent = new Intent(CookPage.this, WelcomePage.class);
+        startActivity(intent);
+    }
 
     private final ItemTouchHelper.Callback itemTouchHelperCallback = new ItemTouchHelper.Callback() {
 
