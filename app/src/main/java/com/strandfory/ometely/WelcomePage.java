@@ -45,37 +45,32 @@ public class WelcomePage extends Activity {
     public static boolean k;
 
     public void singInGoogle(View v){
+        System.out.println("singInGoogle");
         Intent singintent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(singintent, GOOGLE_SIGN_IN);
-    }
-
-    public void logout(){
-        FirebaseAuth.getInstance().signOut();
-        mGoogleSignInClient.signOut().addOnCompleteListener(this,
-                task -> updateUI(null));
-        Intent intent = new Intent(getWindow().getContext(), WelcomePage.class);
-        startActivity(intent);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("Hey i`. here");
         if(requestCode == GOOGLE_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn
                     .getSignedInAccountFromIntent(data);
 
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
+                System.out.println(account + "  ---------------- account");
                 if(account != null) firebaseAuthWithGoogle(account);
 
             } catch (ApiException e) {
-
+                System.out.println(e);
             }
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d("TAG", "firebaseAuthWithGoogle:" + acct.getId());
+        System.out.println("TAG" + "firebaseAuthWithGoogle:" + acct.getId());
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
@@ -128,7 +123,7 @@ public class WelcomePage extends Activity {
                 fillList();
         }
         catch (NullPointerException e){
-
+            Log.e("TAG", String.valueOf(e));
         }
     }
 
@@ -242,7 +237,7 @@ public class WelcomePage extends Activity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                System.out.println("JOJPFngidfbnklfdmnldfn");
             }
         };
         reference.addValueEventListener(valueEventListener);

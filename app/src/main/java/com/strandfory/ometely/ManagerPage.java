@@ -120,4 +120,9 @@ public class ManagerPage extends Activity {
         recyclerView2.setAdapter(adapterDeliverPage);
     }
 
+    public void update(View v){
+        Intent intent = new Intent(ManagerPage.this, MonthPage.class);
+        startActivity(intent);
+    }
+
 }
