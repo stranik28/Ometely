@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +42,10 @@ public class CookPage extends Activity {
 
 
     private void getList(){
-        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS);
+        Date date = new Date();
+        String m = String.valueOf(date.getMonth());
+        String day = String.valueOf(date.getDay());
+        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(m).child(day);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -136,10 +140,22 @@ public class CookPage extends Activity {
             Date date = new Date();
             Map<String, Object> data= new HashMap<>();
             data.put("dateC", date);
+            String m = String.valueOf(date.getMonth());
+            String d = String.valueOf(date.getDay());
             DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("orders")
+                    .child(m)
+                    .child(d)
                     .child(key.get(idS));
             ref.updateChildren(data);
+            data.clear();
+            data.put("nameCook", WelcomePage.name);
+            DatabaseReference refo = FirebaseDatabase.getInstance()
+                    .getReference("orders")
+                    .child(m)
+                    .child(d)
+                    .child(key.get(idS));
+            refo.updateChildren(data);
             getList();
             Log.i(TAG, "onSwiped");
         }

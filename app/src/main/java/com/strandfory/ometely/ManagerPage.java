@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ManagerPage extends Activity {
 
@@ -33,8 +34,6 @@ public class ManagerPage extends Activity {
     private static ArrayList<Integer> price;
     private static boolean c;
     private static boolean d;
-    private DatabaseReference reference;
-    private String KEY_ORDERS = "orders";
 
     @Override
 
@@ -52,7 +51,11 @@ public class ManagerPage extends Activity {
     }
 
     private void getList(){
-        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS);
+        Date d = new Date();
+        String date = String.valueOf(d.getMonth());
+        String day = String.valueOf(d.getDay());
+        String KEY_ORDERS = "orders";
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(date).child(day);
         ValueEventListener valueEventListener = new ValueEventListener(){
 
             @Override

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,10 +36,13 @@ public class BasketPage extends Activity {
 
 
     private void data(String name, String phone, String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican){
-        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS);
+        Date d = new Date();
+        String dd = String.valueOf(d.getMonth());
+        String dm = String.valueOf(d.getDate());
+        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(dd).child(dm);
         Date date = new Date();
         culculateFprice();
-        Order neworder = new Order(date,name,phone,FinalPrice,address,countPepperonni,countCalzone,countCheese,countSeason,countMexican,null,null);
+        Order neworder = new Order(date,name,phone,FinalPrice,address,countPepperonni,countCalzone,countCheese,countSeason,countMexican,null,null,null,null);
         reference.push().setValue(neworder);
     }
 
@@ -151,8 +155,11 @@ public class BasketPage extends Activity {
         if(b){
             data(name,phoneNumber,address,CatalogPage.pepperoni.getCount(), CatalogPage.calzone.getCount(), CatalogPage.quattrostagioni.getCount(),CatalogPage.quattroformaggi.getCount(), CatalogPage.mexican.getCount());
             Log.i(TAG, "Hey I`m put all data");
-            Intent perehod = new Intent(BasketPage.this, WelcomePage.class);
+            Intent perehod = new Intent(BasketPage.this, CatalogPage.class);
             startActivity(perehod);
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Вы успешно сделали заказ ожидайте курьера", Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 

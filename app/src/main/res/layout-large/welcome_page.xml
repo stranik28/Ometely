@@ -33,7 +33,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="100sp"
         android:background="@drawable/common_google_signin_btn_text_light"
-        android:text="sing in"
+        android:text="sign in"
         android:textSize="19sp"
         android:onClick="singInGoogle"/>
 

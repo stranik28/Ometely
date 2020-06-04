@@ -28,7 +28,6 @@ public class AdapterBasketPage extends RecyclerView.Adapter<AdapterBasketPage.Pi
     void refreshData(ArrayList table){
 
         items.clear();
-
         items = table;
 
         notifyDataSetChanged();

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/adapter_grey_dark"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:orientation="horizontal"
+        android:background="@drawable/red_top_background">
+
+        <ImageButton
+            android:layout_gravity="center"
+            android:layout_marginStart="25sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:background="@drawable/exit1"
+            android:onClick="logout"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80sp"
+            android:fontFamily="@font/main_name"
+            android:layout_gravity="center"
+            android:paddingBottom="9sp"
+            android:layout_marginStart="50sp"
+            android:text="@string/OMETELY"
+            android:textColor="@color/white"
+            android:textSize="57sp" />
+
+        <ImageButton
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginStart="40sp"
+            android:background="@drawable/refresh"
+            android:onClick="update"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Имя: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nameInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Телефон: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phoneInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Адрес: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/adressInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Заказ: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pizzasInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Стоимость заказа: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/priceInOrder"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Дата закза: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateOInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Время готоки: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateCInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Имя повара: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cookerInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Дата доставки: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dateDInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="Имя курьера: "
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="3sp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/stick_for_adapter"
+                    android:layout_marginTop="4sp"
+                    android:layout_marginBottom="4sp"
+                    android:layout_marginEnd="2sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/deliverInOrder"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4sp"
+                android:background="@drawable/stick_for_adapter"
+                android:layout_marginTop="1sp"
+                android:layout_marginBottom="1sp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

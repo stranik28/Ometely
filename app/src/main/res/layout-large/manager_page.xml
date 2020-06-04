@@ -15,9 +15,9 @@
 
         <ImageButton
             android:layout_gravity="center"
-            android:layout_marginStart="18sp"
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_marginStart="25sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
             android:background="@drawable/exit1"
             android:onClick="logout"/>
 
@@ -27,7 +27,7 @@
             android:fontFamily="@font/main_name"
             android:layout_gravity="center"
             android:paddingBottom="9sp"
-            android:layout_marginStart="20sp"
+            android:layout_marginStart="50sp"
             android:text="@string/OMETELY"
             android:textColor="@color/white"
             android:textSize="57sp" />
@@ -36,9 +36,9 @@
             android:layout_width="40sp"
             android:layout_height="40sp"
             android:layout_marginTop="20sp"
-            android:layout_marginStart="20sp"
+            android:layout_marginStart="40sp"
             android:background="@drawable/refresh"
-            android:onClick="Update"/>
+            android:onClick="update"/>
 
     </LinearLayout>
 
@@ -54,7 +54,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/in_cooking"
         android:layout_width="match_parent"
-        android:layout_height="210sp"/>
+        android:layout_height="270sp"/>
 
     <TextView
         android:layout_width="match_parent"

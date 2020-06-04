@@ -54,7 +54,10 @@ public class DeliverPage extends Activity{
 
 
     private void getList(){
-        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS);
+        Date d = new Date();
+        String date = String.valueOf(d.getMonth());
+        String day = String.valueOf(d.getDay());
+        reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(date).child(day);
         ValueEventListener valueEventListener = new ValueEventListener(){
 
             @Override
@@ -132,10 +135,22 @@ public class DeliverPage extends Activity{
             Date date = new Date();
             Map<String, Object> data= new HashMap<>();
             data.put("dateD", date);
+            String m = String.valueOf(date.getMonth());
+            String d = String.valueOf(date.getDay());
             DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("orders")
+                    .child(m)
+                    .child(d)
                     .child(key.get(idS));
             ref.updateChildren(data);
+            data.clear();
+            data.put("deliverName", WelcomePage.name);
+            DatabaseReference refo = FirebaseDatabase.getInstance()
+                    .getReference("orders")
+                    .child(m)
+                    .child(d)
+                    .child(key.get(idS));
+            refo.updateChildren(data);
             getList();
         }
     };

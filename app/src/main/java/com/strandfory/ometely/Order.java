@@ -15,12 +15,14 @@ public class Order {
     public Date dateC;
     public Date dateD;
     public int price;
+    public String nameCook;
+    public String deliverName;
 
     public Order(){
 
     }
 
-    public Order(Date dateO,String name, String phone, int price,  String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican, Date dateD, Date dateC){ ;
+    public Order(Date dateO,String name, String phone, int price,  String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican, Date dateD, Date dateC, String nameCook, String DeliverName){ ;
         this.dateO = dateO;
         this.name = name;
         this.phone = phone;
@@ -33,6 +35,8 @@ public class Order {
         this.countMexican = countMexican;
         this.dateC = dateC;
         this.dateD = dateD;
+        this.nameCook = nameCook;
+        this.deliverName = DeliverName;
     }
 
 }

@@ -15,19 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "461293190779-umh3s1td9jr7ktds96qp1j3obcdb676b.apps.googleusercontent.com",
+          "client_id": "461293190779-01teknjeklifqib4gb3r7qvtu3sfmmrb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.strandfory.ometely",
-            "certificate_hash": "44a8814e934bcbc5c5d649d4ee819c389a9bc6dc"
-          }
-        },
-        {
-          "client_id": "461293190779-18gg48sdf9dd2enc5lpl67ujm57kr0gb.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.strandfory.ometely",
-            "certificate_hash": "ce15b4d5ec3311a8ad264b82eecc9b8a60ddb36c"
+            "certificate_hash": "c3810f7158c3e17acb241c98d35487a6adcfa16f"
           }
         },
         {

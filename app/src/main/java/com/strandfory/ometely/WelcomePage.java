@@ -40,6 +40,7 @@ public class WelcomePage extends Activity {
     private ArrayList<Integer> manager;
     private ArrayList<String > pass;
     private DatabaseReference reference;
+    public static String name;
     Task<GoogleSignInAccount> task;
     GoogleSignInOptions gso;
     public static boolean k;
@@ -60,7 +61,6 @@ public class WelcomePage extends Activity {
 
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                System.out.println(account + "  ---------------- account");
                 if(account != null) firebaseAuthWithGoogle(account);
 
             } catch (ApiException e) {
@@ -93,7 +93,7 @@ public class WelcomePage extends Activity {
 
     public void updateUI(FirebaseUser user) {
         if (user != null) {
-            String name = user.getDisplayName();
+            name = user.getDisplayName();
             String email = user.getEmail();
             String photo = String.valueOf(user.getPhotoUrl());
             Log.i("TAG", name + " " + "email " + "photo");
@@ -237,7 +237,6 @@ public class WelcomePage extends Activity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                System.out.println("JOJPFngidfbnklfdmnldfn");
             }
         };
         reference.addValueEventListener(valueEventListener);
