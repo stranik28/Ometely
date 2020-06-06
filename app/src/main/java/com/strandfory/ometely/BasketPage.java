@@ -2,12 +2,11 @@ package com.strandfory.ometely;
 
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,6 +34,10 @@ public class BasketPage extends Activity {
     private DatabaseReference reference;
     private FirebaseDatabase db;
     private String KEY_ORDERS = "orders";
+    private CheckBox privateHouse;
+    private String apprt;
+    private String level;
+    private String porch;
 
 
     private void data(String name, String phone, String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican){
@@ -82,6 +87,30 @@ public class BasketPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bascket_page);
         FinalBuy = findViewById(R.id.buyText);
+        privateHouse = findViewById(R.id.privateHous);
+        privateHouse.setOnClickListener((View.OnClickListener) v -> {
+            if(privateHouse.isChecked()){
+                TextView porchText = (TextView) findViewById(R.id.porchText);
+                porchText.setVisibility(View.GONE);
+                EditText porchEdit = (EditText) findViewById(R.id.porch);
+                porchEdit.setVisibility(View.GONE);
+                TextView levelT = (TextView) findViewById(R.id.levelT);
+                levelT.setVisibility(View.GONE);
+                EditText levelE = (EditText) findViewById(R.id.level);
+                levelE.setVisibility(View.GONE);
+                TextView roomT = (TextView) findViewById(R.id.roomT);
+                roomT.setVisibility(View.GONE);
+                EditText roomE = (EditText) findViewById(R.id.room);
+                roomE.setVisibility(View.GONE);
+            }
+
+            else {
+                TextView porchText = (TextView) findViewById(R.id.porchText);
+                porchText.setVisibility(View.VISIBLE);
+                EditText porchEdit = (EditText) findViewById(R.id.porch);
+                porchEdit.setVisibility(View.VISIBLE);
+            }
+        });
         culculateFprice();
         Recycler();
     }
@@ -126,27 +155,35 @@ public class BasketPage extends Activity {
             b = false;
         }
 
-        String porch = porchik.getText().toString();
+        if(!privateHouse.isChecked()) {
 
-        if (porchik.getText().length() == 0){
-            t.setText(getString(R.string.error_final));
-            b = false;
+            porch = porchik.getText().toString();
+
+            if (porchik.getText().length() == 0) {
+                t.setText(getString(R.string.error_final));
+                b = false;
+            }
+
+            level = levelik.getText().toString();
+
+
+            if (levelik.getText().length() == 0) {
+                t.setText(getString(R.string.error_final));
+                b = false;
+            }
+
+            apprt = apprtik.getText().toString();
+
+
+            if (apprtik.getText().length() == 0) {
+                t.setText(getString(R.string.error_final));
+                b = false;
+            }
         }
-
-        String level = levelik.getText().toString();
-
-
-        if (levelik.getText().length() == 0){
-            t.setText(getString(R.string.error_final));
-            b = false;
-        }
-
-        String apprt = apprtik.getText().toString();
-
-
-        if (apprtik.getText().length() == 0){
-            t.setText(getString(R.string.error_final));
-            b = false;
+        else{
+            porch = "нет";
+            level = "нет";
+            apprt = "нет";
         }
 
         String address = " Ул: " + street + " \n " + "Дом:  " + home + " \n " + "Подъезд: " + porch + " \n " + "Этаж: " + level + " \n " + "Кв: " + apprt;

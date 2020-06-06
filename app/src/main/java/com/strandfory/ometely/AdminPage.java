@@ -2,7 +2,6 @@ package com.strandfory.ometely;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -21,8 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
 public class AdminPage extends Activity {
 

@@ -20,7 +20,7 @@
     <string name="OrderText1">В корзине </string>
     <string name="OrderText2Null"> пицц</string>
     <string name="OrderText2One"> пицца</string>
-    <string name="OrderText2Two"> пицы</string>
+    <string name="OrderText2Two"> пиццы</string>
     <string name="LogintHint">Введите email</string>
     <string name="PasswordHint">Введите пароль</string>
     <string name="LoginB">Войти</string>

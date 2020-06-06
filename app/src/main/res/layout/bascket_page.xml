@@ -56,13 +56,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7sp">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_for_data_check"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/text1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/fill_data_for_delivery"
@@ -71,14 +72,17 @@
                     android:textColor="@color/black"/>
 
                 <TextView
+                    android:layout_below="@+id/text1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2sp"
                     android:text="@string/name"
+                    android:id="@+id/text2"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
                 <EditText
+                    android:layout_below="@id/text2"
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,14 +90,17 @@
                     android:backgroundTint="@color/red_for_text_like_a_top_red"/>
 
                 <TextView
+                    android:layout_below="@id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2sp"
                     android:text="@string/phone_number"
                     android:textColor="@color/black"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:id="@+id/text3"/>
 
                 <EditText
+                    android:layout_below="@+id/text3"
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -101,14 +108,17 @@
                     android:backgroundTint="@color/red_for_text_like_a_top_red"/>
 
                 <TextView
+                    android:layout_below="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/street"
+                    android:id="@+id/text4"
                     android:layout_marginStart="2sp"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
                 <EditText
+                    android:layout_below="@+id/text4"
                     android:id="@+id/street"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,6 +126,8 @@
                     android:backgroundTint="@color/red_for_text_like_a_top_red"/>
 
                 <TextView
+                    android:id="@+id/text5"
+                    android:layout_below="@+id/street"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/house_full"
@@ -124,6 +136,7 @@
                     android:textSize="15sp"/>
 
                 <EditText
+                    android:layout_below="@+id/text5"
                     android:id="@+id/home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,15 +144,26 @@
                     android:layout_marginStart="2sp"
                     android:hint="@string/house"/>
 
+                <CheckBox
+                    android:layout_below="@+id/home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Я живу в частном доме"
+                    android:textColorHint="@color/black"
+                    android:id="@+id/privateHous"/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/porch"
+                    android:layout_below="@+id/privateHous"
+                    android:id="@+id/porchText"
                     android:textColor="@color/black"
                     android:layout_marginStart="2sp"
                     android:textSize="15sp"/>
 
                 <EditText
+                    android:layout_below="@+id/porchText"
                     android:id="@+id/porch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,30 +171,36 @@
                     android:backgroundTint="@color/red_for_text_like_a_top_red"/>
 
                 <TextView
+                    android:layout_below="@+id/porch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/level"
+                    android:id="@+id/levelT"
                     android:textColor="@color/black"
                     android:layout_marginStart="2sp"
                     android:textSize="15sp" />
 
                 <EditText
                     android:id="@+id/level"
+                    android:layout_below="@id/levelT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/level"
                     android:backgroundTint="@color/red_for_text_like_a_top_red"/>
 
                 <TextView
+                    android:layout_below="@id/level"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/room"
+                    android:id="@+id/roomT"
                     android:layout_marginStart="2sp"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
                 <EditText
                     android:id="@+id/room"
+                    android:layout_below="@id/roomT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/room"
@@ -178,6 +208,7 @@
 
 
                 <TextView
+                    android:layout_below="@+id/room"
                     android:id="@+id/buyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -186,6 +217,7 @@
                     android:textSize="20sp"/>
 
                 <TextView
+                    android:layout_below="@+id/buyText"
                     android:id="@+id/errorview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -194,6 +226,8 @@
                     android:gravity="center"/>
 
                 <Button
+                    android:layout_below="@+id/errorview"
+                    android:layout_centerHorizontal="true"
                     android:onClick="finish_check"
                     android:layout_gravity="center"
                     android:layout_width="200sp"
@@ -204,7 +238,7 @@
                     android:textColorHint="@color/white"
                     android:layout_marginBottom="8sp"/>
 
-            </LinearLayout>
+            </RelativeLayout>
     </ScrollView>
 
 </LinearLayout>

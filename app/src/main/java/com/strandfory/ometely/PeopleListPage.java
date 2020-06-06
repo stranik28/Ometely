@@ -1,7 +1,9 @@
 package com.strandfory.ometely;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 
@@ -101,5 +103,11 @@ public class PeopleListPage extends Activity {
         nameCT.setText(nameC);
         dateDT.setText(timeD);
         nameDT.setText(nameD);
+    }
+
+    public void logout(View view) {
+        WelcomePage.k = true;
+        Intent intent = new Intent(PeopleListPage.this, WelcomePage.class);
+        startActivity(intent);
     }
 }
