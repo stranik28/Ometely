@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -47,8 +46,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginTop="2dp">
+        android:layout_below="@+id/linearLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,21 +54,24 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginTop="20sp"
                 android:layout_width="match_parent"
+                android:layout_marginStart="23sp"
+                android:layout_marginEnd="23sp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2sp"
-                android:background="@drawable/pizza_button_background"
+                android:background="@drawable/pizza_back"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="135sp"
-                    android:layout_height="130sp"
-                    android:layout_marginStart="8sp"
-                    android:layout_marginTop="6sp"
-                    android:layout_marginBottom="6sp"
-                    android:background="@drawable/pepperoni" />
+                    android:layout_width="115sp"
+                    android:layout_height="110sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginBottom="10sp"
+                    android:background="@drawable/pizza_type_one" />
 
                 <LinearLayout
+                    android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -78,280 +79,343 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12sp"
-                        android:fontFamily="@font/pizza_name"
+                        android:fontFamily="@font/lora_regular"
                         android:gravity="center"
-                        android:text="@string/Peperonni"
-                        android:textColor="@color/black"
-                        android:textSize="28sp" />
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        android:text="Пепперони"/>
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="Цена: 300 руб."/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="150sp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1sp"
                         android:gravity="center"
                         android:paddingStart="3sp"
                         android:paddingEnd="3sp"
-                        android:text="@string/Description_pepperoni"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="@string/Description_pepperoni"/>
 
                     <Button
                         android:id="@+id/PepperoniButton"
-                        android:layout_width="190sp"
-                        android:layout_height="36sp"
+                        android:layout_width="90sp"
+                        android:layout_height="23sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
-                        android:layout_marginBottom="7sp"
-                        android:background="@drawable/buy_button"
-                        android:hint="@string/Buy_pepperoni"
+                        android:layout_marginBottom="8sp"
+                        android:background="@drawable/mobile_sms_code_login"
+                        android:hint="купить"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColorHint="@color/white"
                         android:onClick="PepperoniClick"
-                        android:paddingStart="30sp"
-                        android:paddingEnd="30sp"
+                        android:paddingBottom="1sp"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="10sp" />
 
 
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7sp"
-                android:background="@drawable/pizza_button_background"
+                android:layout_marginStart="23sp"
+                android:layout_marginEnd="23sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/pizza_back"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="135sp"
-                    android:layout_height="130sp"
-                    android:layout_marginStart="8sp"
-                    android:layout_marginTop="6sp"
-                    android:layout_marginBottom="6sp"
-                    android:background="@drawable/calzone" />
+                    android:layout_width="115sp"
+                    android:layout_height="110sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginBottom="10sp"
+                    android:background="@drawable/pizza_type_two" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12sp"
-                        android:fontFamily="@font/pizza_name"
+                        android:fontFamily="@font/lora_regular"
                         android:gravity="center"
-                        android:text="@string/Calzone"
-                        android:textColor="@color/black"
-                        android:textSize="28sp" />
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        android:text="@string/Calzone"/>
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="Цена: 380 руб."/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="150sp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1sp"
                         android:gravity="center"
                         android:paddingStart="3sp"
                         android:paddingEnd="3sp"
-                        android:text="@string/Description_calzone"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="@string/Description_calzone" />
 
                     <Button
                         android:id="@+id/Calzone"
-                        android:layout_width="190sp"
-                        android:layout_height="36sp"
+                        android:layout_width="90sp"
+                        android:layout_height="23sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
-                        android:layout_marginBottom="7sp"
-                        android:background="@drawable/buy_button"
-
-                        android:hint="@string/Buy_calzone"
+                        android:layout_marginBottom="8sp"
+                        android:background="@drawable/mobile_sms_code_login"
+                        android:hint="купить"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColorHint="@color/white"
                         android:onClick="CalzoneClick"
-                        android:paddingStart="30sp"
-                        android:paddingEnd="30sp"
+                        android:paddingBottom="1sp"
                         android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:textSize="10sp" />
 
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="20sp"
                 android:layout_width="match_parent"
+                android:layout_marginStart="23sp"
+                android:layout_marginEnd="23sp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="7sp"
-                android:background="@drawable/pizza_button_background"
+                android:background="@drawable/pizza_back"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="135sp"
-                    android:layout_height="130sp"
-                    android:layout_marginStart="8sp"
-                    android:layout_marginTop="6sp"
-                    android:layout_marginBottom="6sp"
-                    android:background="@drawable/quattro_stagioni" />
+                    android:layout_width="115sp"
+                    android:layout_height="110sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginBottom="10sp"
+                    android:background="@drawable/pizza_type_three" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp"
-                        android:fontFamily="@font/pizza_name"
+                        android:fontFamily="@font/lora_regular"
                         android:gravity="center"
-                        android:lineSpacingExtra="3sp"
-                        android:text="@string/Quattro_stagioni"
-                        android:textColor="@color/black"
-                        android:textSize="25sp" />
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        android:text="@string/Quattro_stagioni"/>
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="Цена: 300 руб."/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="150sp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1sp"
                         android:gravity="center"
                         android:paddingStart="3sp"
                         android:paddingEnd="3sp"
-                        android:text="@string/Description_quattro_stagioni"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="@string/Description_quattro_stagioni" />
 
                     <Button
                         android:id="@+id/QuattroStagioni"
-                        android:layout_width="190sp"
-                        android:layout_height="36sp"
+                        android:layout_width="90sp"
+                        android:layout_height="23sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="2sp"
-                        android:layout_marginBottom="7sp"
-                        android:background="@drawable/buy_button"
-
-                        android:hint="@string/Buy_pepperoni"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginBottom="8sp"
+                        android:background="@drawable/mobile_sms_code_login"
+                        android:hint="купить"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColorHint="@color/white"
                         android:onClick="QuattroStagioniClick"
-                        android:paddingStart="30sp"
-                        android:paddingEnd="30sp"
+                        android:paddingBottom="1sp"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="10sp"/>
 
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7sp"
-                android:background="@drawable/pizza_button_background"
+                android:layout_marginStart="23sp"
+                android:layout_marginEnd="23sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/pizza_back"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="140sp"
-                    android:layout_height="135sp"
-                    android:layout_marginStart="8sp"
-                    android:layout_marginTop="4sp"
-                    android:layout_marginBottom="6sp"
-                    android:background="@drawable/quattro_formaggi" />
+                    android:layout_width="115sp"
+                    android:layout_height="110sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginBottom="10sp"
+                    android:background="@drawable/pizza_type_four" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12sp"
-                        android:fontFamily="@font/pizza_name"
+                        android:fontFamily="@font/lora_regular"
                         android:gravity="center"
-                        android:text="@string/Quattro_formaggi"
-                        android:textColor="@color/black"
-                        android:textSize="27sp" />
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        android:text="@string/Quattro_formaggi" />
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="Цена: 350 руб."/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="150sp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1sp"
                         android:gravity="center"
                         android:paddingStart="3sp"
                         android:paddingEnd="3sp"
-                        android:text="@string/Description_quattro_formaggi"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="@string/Description_quattro_formaggi" />
 
                     <Button
-                        android:id="@+id/QuattroFormaggi"
-                        android:layout_width="190sp"
-                        android:layout_height="36sp"
+                        android:layout_width="90sp"
+                        android:layout_height="23sp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="6sp"
-                        android:layout_marginBottom="7sp"
-                        android:background="@drawable/buy_button"
-
-                        android:hint="@string/Buy_quattro_formaggi"
+                        android:layout_marginTop="8sp"
+                        android:layout_marginBottom="8sp"
+                        android:background="@drawable/mobile_sms_code_login"
+                        android:hint="купить"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColorHint="@color/white"
                         android:onClick="QuattroFormaggiClick"
-                        android:paddingStart="30sp"
-                        android:paddingEnd="30sp"
+                        android:paddingBottom="1sp"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="10sp" />
 
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="20sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7sp"
-                android:background="@drawable/pizza_button_background"
+                android:layout_marginStart="23sp"
+                android:layout_marginEnd="23sp"
+                android:layout_height="match_parent"
+                android:background="@drawable/pizza_back"
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/backet"
-                    android:layout_width="135sp"
-                    android:layout_height="130sp"
-                    android:layout_marginStart="8sp"
-                    android:layout_marginTop="6sp"
-                    android:layout_marginBottom="6sp"
-                    android:background="@drawable/mexican" />
+                    android:layout_width="115sp"
+                    android:layout_height="110sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_marginBottom="10sp"
+                    android:background="@drawable/pizza_type_five" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12sp"
-                        android:fontFamily="@font/pizza_name"
+                        android:fontFamily="@font/lora_regular"
                         android:gravity="center"
-                        android:text="@string/Mexican"
-                        android:textColor="@color/black"
-                        android:textSize="26sp" />
+                        android:textColor="@color/white"
+                        android:textSize="19sp"
+                        android:text="@string/Mexican" />
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="Цена: 350 руб."/>
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="150sp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="1sp"
                         android:gravity="center"
                         android:paddingStart="3sp"
                         android:paddingEnd="3sp"
-                        android:text="@string/Description_mexican"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:fontFamily="@font/lora_regular"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        android:text="@string/Description_mexican" />
 
                     <Button
                         android:id="@+id/MexicanId"
-                        android:layout_width="190sp"
-                        android:layout_height="36sp"
+                        android:layout_width="90sp"
+                        android:layout_height="23sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="8sp"
-                        android:layout_marginBottom="7sp"
-                        android:background="@drawable/buy_button"
-                        android:hint="@string/Buy_mexican"
+                        android:layout_marginBottom="8sp"
+                        android:background="@drawable/mobile_sms_code_login"
+                        android:hint="купить"
+                        android:fontFamily="@font/lora_regular"
+                        android:textColorHint="@color/white"
                         android:onClick="MexicanClick"
-                        android:paddingStart="30sp"
-                        android:paddingEnd="30sp"
+                        android:paddingBottom="1sp"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="10sp"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -372,12 +436,13 @@
 
         <ImageButton
             android:layout_marginTop="1sp"
-            android:layout_marginStart="10sp"
+            android:layout_marginStart="17sp"
             android:layout_gravity="center_vertical"
             android:layout_height="38sp"
             android:layout_width="48sp"
             android:onClick="goToBacket"
-            android:background="@drawable/shopingbag"/>
+            android:background="@drawable/backet_one"/>
+
         <TextView
             android:id="@+id/TextDown"
             android:layout_width="match_parent"

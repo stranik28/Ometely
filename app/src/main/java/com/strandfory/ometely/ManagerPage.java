@@ -50,7 +50,7 @@ public class ManagerPage extends Activity {
     private void getList(){
         Date d = new Date();
         String date = String.valueOf(d.getMonth());
-        String day = String.valueOf(d.getDay());
+        String day = String.valueOf(d.getDate());
         String KEY_ORDERS = "orders";
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(date).child(day);
         ValueEventListener valueEventListener = new ValueEventListener(){

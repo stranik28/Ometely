@@ -41,9 +41,11 @@ public class CookPage extends Activity {
 
 
     private void getList(){
+        Log.i("TAG","I`m in Cook list");
         Date date = new Date();
         String m = String.valueOf(date.getMonth());
-        String day = String.valueOf(date.getDay());
+        String day = String.valueOf(date.getDate());
+        Log.i("DAYS", String.valueOf(day) + " - days; " + String.valueOf(m));
         reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(m).child(day);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
@@ -54,7 +56,9 @@ public class CookPage extends Activity {
                 key = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Order order = ds.getValue(Order.class);
+                    Log.i("TAG" , String.valueOf(order.dateC));
                     if(order.dateC == null) {
+                        Log.i("TAG", "Order.dateC == NULL");
                         key.add(ds.getKey());
                         name.add(order.name);
                         phone.add(order.phone);
@@ -140,7 +144,7 @@ public class CookPage extends Activity {
             Map<String, Object> data= new HashMap<>();
             data.put("dateC", date);
             String m = String.valueOf(date.getMonth());
-            String d = String.valueOf(date.getDay());
+            String d = String.valueOf(date.getDate());
             DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("orders")
                     .child(m)

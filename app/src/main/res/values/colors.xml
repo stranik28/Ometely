@@ -12,4 +12,5 @@
     <color name="for_button_shape">#FF101010</color>
     <color name="adapter_stick_lite">#767575</color>
     <color name="dark_grey">#211F1F</color>
+    <color name="red">#ff0a0a</color>
 </resources>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,7 +57,7 @@ public class DeliverPage extends Activity{
     private void getList(){
         Date d = new Date();
         String date = String.valueOf(d.getMonth());
-        String day = String.valueOf(d.getDay());
+        String day = String.valueOf(d.getDate());
         reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(date).child(day);
         ValueEventListener valueEventListener = new ValueEventListener(){
 
@@ -136,7 +137,7 @@ public class DeliverPage extends Activity{
             Map<String, Object> data= new HashMap<>();
             data.put("dateD", date);
             String m = String.valueOf(date.getMonth());
-            String d = String.valueOf(date.getDay());
+            String d = String.valueOf(date.getDate());
             DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("orders")
                     .child(m)
@@ -160,4 +161,5 @@ public class DeliverPage extends Activity{
         Intent intent = new Intent(DeliverPage.this, WelcomePage.class);
         startActivity(intent);
     }
+
 }

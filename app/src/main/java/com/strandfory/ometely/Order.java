@@ -17,12 +17,13 @@ public class Order {
     public int price;
     public String nameCook;
     public String deliverName;
+    public String uidUSer;
 
     public Order(){
 
     }
 
-    public Order(Date dateO,String name, String phone, int price,  String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican, Date dateD, Date dateC, String nameCook, String DeliverName){ ;
+    public Order(Date dateO,String name, String phone, int price,  String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican, Date dateD, Date dateC, String nameCook, String DeliverName, String uidUser){ ;
         this.dateO = dateO;
         this.name = name;
         this.phone = phone;
@@ -37,6 +38,7 @@ public class Order {
         this.dateD = dateD;
         this.nameCook = nameCook;
         this.deliverName = DeliverName;
+        this.uidUSer = uidUser;
     }
 
 }

@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -38,6 +40,8 @@ public class BasketPage extends Activity {
     private String apprt;
     private String level;
     private String porch;
+    private FirebaseAuth mAuth;
+    private String uidUser;
 
 
     private void data(String name, String phone, String address, int countPepperonni, int countCalzone, int countSeason, int countCheese, int countMexican){
@@ -47,7 +51,7 @@ public class BasketPage extends Activity {
         reference = FirebaseDatabase.getInstance().getReference(KEY_ORDERS).child(dd).child(dm);
         Date date = new Date();
         culculateFprice();
-        Order neworder = new Order(date,name,phone,FinalPrice,address,countPepperonni,countCalzone,countCheese,countSeason,countMexican,null,null,null,null);
+        Order neworder = new Order(date,name,phone,FinalPrice,address,countPepperonni,countCalzone,countCheese,countSeason,countMexican,null,null,null,null,uidUser);
         reference.push().setValue(neworder);
     }
 
@@ -86,6 +90,16 @@ public class BasketPage extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bascket_page);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        uidUser = currentUser.getUid();
+        try{
+            EditText editText = (EditText) findViewById(R.id.phone);
+            editText.setText(currentUser.getPhoneNumber(), TextView.BufferType.EDITABLE);
+        }
+        catch (NullPointerException e){
+
+        }
         FinalBuy = findViewById(R.id.buyText);
         privateHouse = findViewById(R.id.privateHous);
         privateHouse.setOnClickListener((View.OnClickListener) v -> {
@@ -109,6 +123,14 @@ public class BasketPage extends Activity {
                 porchText.setVisibility(View.VISIBLE);
                 EditText porchEdit = (EditText) findViewById(R.id.porch);
                 porchEdit.setVisibility(View.VISIBLE);
+                TextView levelT = (TextView) findViewById(R.id.levelT);
+                levelT.setVisibility(View.VISIBLE);
+                EditText levelE = (EditText) findViewById(R.id.level);
+                levelE.setVisibility(View.VISIBLE);
+                TextView roomT = (TextView) findViewById(R.id.roomT);
+                roomT.setVisibility(View.VISIBLE);
+                EditText roomE = (EditText) findViewById(R.id.room);
+                roomE.setVisibility(View.VISIBLE);
             }
         });
         culculateFprice();

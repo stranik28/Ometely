@@ -78,7 +78,6 @@ public class AdapterViewMonth extends RecyclerView.Adapter<AdapterViewMonth.Pizz
                 System.out.println(time.get(1));
             }
             catch (NullPointerException ee){
-                System.out.println("3,14здец полный если ты это видишь");
             }
         }
 

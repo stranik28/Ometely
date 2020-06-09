@@ -123,7 +123,7 @@ public class MonthPage extends Activity {
                     for(DataSnapshot ds: dataSnapshot.getChildren()){
                         Order orderp = ds.getValue(Order.class);
                         System.out.println(orderp.name);
-                        if(orderp.dateO.getDay() == p+1) {
+                        if(orderp.dateO.getDate() == p+1) {
                             key.add(ds.getKey());
                             order.add(orderp);
                             name.add(orderp.name);
