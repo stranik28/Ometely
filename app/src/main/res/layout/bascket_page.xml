@@ -36,11 +36,10 @@
         android:id="@+id/text21"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:text="@string/basketCapsEn"
         android:gravity="center"
         android:textSize="30sp"
-        android:textColor="#8a0606"
+        android:textColor="@color/white"
         android:fontFamily="@font/test2"/>
 
 
@@ -232,7 +231,7 @@
                     android:layout_gravity="center"
                     android:layout_width="200sp"
                     android:layout_height="25sp"
-                    android:background="@drawable/button_login"
+                    android:background="@drawable/pizza_back"
                     android:hint="Оформить заказ"
                     android:layout_marginTop="12sp"
                     android:textColorHint="@color/white"
