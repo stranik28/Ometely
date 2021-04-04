@@ -1,10 +1,11 @@
 # Pizzeria mobile application.
 
-![Ometely Logo](https://raw.githubusercontent.com/stranik28/Ometely/master/app/src/main/res/drawable-v24/icon_red.png)
+<img src="https://raw.githubusercontent.com/stranik28/Ometely/master/app/src/main/res/drawable-v24/icon_red.png" 
+ width="255" height="255" alt ="Ometely Logo">
 
-  <a href="#goals"> Goals</a>
-  <br> <a href="#functional"> Functional </a>
-  <br> <a href="#techonologies"> Techonologies </a>
+###  <a href="#goals"> Goals</a>
+###  <a href="#functional"> Functional </a>
+###  <a href="#techonologies"> Techonologies </a>
 ## <a name = "goals"> Goals </a>
 The main purpose of this application was to create a graduation project at IT samsung school to get the highest score in the diploma.  As a result, the application got 9/10 points:fire::fire:.  And also took 1st place in the regional competition "It samsung school chooses the strongest" :boom::muscle: 🥇.  In addition, I was faced with the task of developing a universal application that would be convenient for both staff and customers of the cafe, I took a pizzeria as a basis.:pizza:
 <br> <br>
