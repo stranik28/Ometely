@@ -19,7 +19,14 @@ The main purpose of this application was to create a graduation project at IT sa
 5. After successful delivery, the order will be marked as completed and will be stored for a year in the database to which the manager can contact.
 6. Admin functionality allows users to edit and add roles(Client,courier, admin, cook, administrator).
 
+<img src="https://i.imgur.com/KiWsntU.png" 
+ width="200" height="350" alt ="Ometely login page">
+
 ## <a name ="techonologies"> Techonologies </a>
 As data-base and login-system in this app I use google Firebase.
 
+<img src="https://1.bp.blogspot.com/-YIfQT6q8ZM4/Vzyq5z1B8HI/AAAAAAAAAAc/UmWSSMLKtKgtH7CACElUp12zXkrPK5UoACLcB/s1600/image00.png" 
+ width="300" height="170" alt ="Google Firbase">
+
+ 
 
