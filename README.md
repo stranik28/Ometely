@@ -1,7 +1,7 @@
 # Pizzeria mobile application.
 
 <img src="https://raw.githubusercontent.com/stranik28/Ometely/master/app/src/main/res/drawable-v24/icon_red.png" 
- width="235" height="235" alt ="Ometely Logo">
+ width="200" height="200" alt ="Ometely Logo">
 
 ###  <a href="#goals"> Goals</a>
 ###  <a href="#functional"> Functional </a>
