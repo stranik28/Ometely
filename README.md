@@ -1,4 +1,7 @@
 # Pizzeria mobile application.
+
+![Ometely Logo](https://raw.githubusercontent.com/stranik28/Ometely/master/app/src/main/res/drawable-v24/icon_red.png)
+
   <a href="#goals"> Goals</a>
   <br> <a href="#functional"> Functional </a>
   <br> <a href="#techonologies"> Techonologies </a>
