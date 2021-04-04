@@ -6,7 +6,7 @@
 </ul>
 <h3><a name = "goals"> Goals </a> </h3>
 The main purpose of this application was to create a graduation project at IT samsung school to get the highest score in the diploma.  As a result, the application got 9/10 points:fire::fire:.  And also took 1st place in the regional competition "It samsung school chooses the strongest" :boom::muscle: 🥇.  In addition, I was faced with the task of developing a universal application that would be convenient for both staff and customers of the cafe, I took a pizzeria as a basis.:pizza:
-![](https://i.imgur.com/ooOYzNE.gif)
+[Funny Pizza](https://i.imgur.com/ooOYzNE.gif)
 
 <h3><a name ="functional"> Functional </a></h3>
 
